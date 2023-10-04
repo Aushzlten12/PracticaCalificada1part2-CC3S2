@@ -1,5 +1,3 @@
-require 'byebug'
-
 class WordGuesserGame
 
   # add the necessary class methods, attributes, etc. here
@@ -23,7 +21,6 @@ class WordGuesserGame
     if /^[^a-zA-Z]{1}$/ =~ letter
       raise ArgumentError, "El caracter ingresado debe ser una letra"
     end
-    byebug
     if @word.include?(letter.downcase)
       if !@guesses.include?(letter.upcase) && !@guesses.include?(letter.downcase)
         @guesses = @guesses +  letter
