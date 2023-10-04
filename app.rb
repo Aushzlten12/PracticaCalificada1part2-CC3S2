@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require 'rubygems'
 require 'sinatra/flash'
 require_relative './lib/wordguesser_game.rb'
 
