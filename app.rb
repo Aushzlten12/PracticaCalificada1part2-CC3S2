@@ -86,7 +86,6 @@ class WordGuesserApp < Sinatra::Base
     else
       redirect '/show'
     end # You may change/remove this line
-    erb :lose # You may change/remove this line
   end
   
 end
