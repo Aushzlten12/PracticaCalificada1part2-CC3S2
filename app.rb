@@ -59,35 +59,29 @@ class WordGuesserApp < Sinatra::Base
   get '/show' do
     ### YOUR CODE HERE ###
     estadoJuego = @game.check_win_or_lose
-
+    # Redireccionamos si gano, perdió o sigue con vida
     case estadoJuego
     when :win
-      redirect '/win'
+      erb :win
     when :lose
-      redirect '/lose'
+      erb :lose
     else 
       erb :show # You may change/remove this line      
     end
   end
   
   get '/win' do
-    ### YOUR CODE HERE ###
-    if params['from_redirect'] == 'true'
-      # El usuario llegó a '/win' desde una redirección interna
+    if request.referer && request.referer.include?('/win')
       erb :win
     else
-      # El usuario accedió directamente a '/win' o desde otra página
       redirect '/show'
     end
   end
   
   get '/lose' do
-    ### YOUR CODE HERE ###
-    if params['from_redirect'] == 'true'
-      # El usuario llegó a '/win' desde una redirección interna
+    if request.referer && request.referer.include?('/lose')
       erb :lose
     else
-      # El usuario accedió directamente a '/win' o desde otra página
       redirect '/show'
     end
   end
