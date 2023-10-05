@@ -72,20 +72,24 @@ class WordGuesserApp < Sinatra::Base
   
   get '/win' do
     ### YOUR CODE HERE ###
-    if  request.referer && request.referer.include?('/win')
+    if params['from_redirect'] == 'true'
+      # El usuario llegó a '/win' desde una redirección interna
       erb :win
     else
+      # El usuario accedió directamente a '/win' o desde otra página
       redirect '/show'
-    end # You may change/remove this line
+    end
   end
   
   get '/lose' do
     ### YOUR CODE HERE ###
-    if  request.referer && request.referer.include?('/lose')
+    if params['from_redirect'] == 'true'
+      # El usuario llegó a '/win' desde una redirección interna
       erb :lose
     else
+      # El usuario accedió directamente a '/win' o desde otra página
       redirect '/show'
-    end # You may change/remove this line
+    end
   end
   
 end
